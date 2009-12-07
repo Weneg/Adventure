@@ -1,6 +1,6 @@
 /*
- * Die Klasse Inventar reprŠsentiert ein Inventar 
- * welches GegenstŠnde der Klasse Gegenstand beinhaltet.
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 
 package adventure;
@@ -15,15 +15,15 @@ public class Inventar {
     
     private Gegenstand[] liste;
     private int anzahl;
-    private int maxgewicht;
+    private int maximalgewicht;
     private int gewicht;
     
     public Inventar() {
-	    liste = new Gegenstand[max];
-	    anzahl = 0;
-	    setMaxgewicht(20);
-	    gewicht = 0;
-	}
+        liste = new Gegenstand[max];
+        anzahl = 0;
+        maximalgewicht = 20;
+        gewicht = 0;
+    }
 
 	private void entferne(int i) {
 	    if(liste[i] != null) {
@@ -32,14 +32,14 @@ public class Inventar {
 	}
 
 	public void setMaxgewicht(int maxgewicht) {
-		this.maxgewicht = maxgewicht;
+		this.maximalgewicht = maxgewicht;
 	}
 
 	public int getMaxgewicht() {
-		return maxgewicht;
+		return maximalgewicht;
 	}
 
-	public void einpacken(Gegenstand geg) {
+    public void einpacken(Gegenstand geg) {
         liste[anzahl] = geg;
         anzahl = anzahl+1;
         gewicht = gewicht + geg.gibGewicht();
@@ -51,8 +51,11 @@ public class Inventar {
         if(pos > -1) {
             Gegenstand temp = liste[pos];
             entferne(pos);
+            for(int i = 0; i<=pos; i++) {
+                liste[i] = liste[i+1];
+            }
             gewicht = gewicht - temp.gibGewicht();
-            System.out.println("Gegenstand "+temp.toString()+" wurde ausgepackt.");
+            anzahl --;
             return temp;
         } else {
             System.out.println(s+" ist nicht im Inventar");
@@ -73,7 +76,7 @@ public class Inventar {
         }
         return pos;
     }
-
+    
     public void sortieren(int modus) {
 
         for(int i = 0; i < anzahl; i++) {
@@ -123,8 +126,15 @@ public class Inventar {
                 }
         	}
         }
+    
+    public void setMaximalgewicht(int maximalgewicht) {
+        this.maximalgewicht = maximalgewicht;
+    }
 
     public int gibGewicht() {
         return gewicht;
+    }
+    public int getMaximalgewicht() {
+        return maximalgewicht;
     }
 }

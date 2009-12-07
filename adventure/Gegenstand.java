@@ -7,7 +7,7 @@ package adventure;
 
 /**
  *
- * @author metha101
+ * @author Timo Schrappe, Nils Preuschoff
  */
 public class Gegenstand {
     private String name;
@@ -16,14 +16,16 @@ public class Gegenstand {
     private double goldwert;
     private double zustand;
     private int gewicht;
+    private int typ;
 
-    public Gegenstand(String name, double angriffswert, double verteidigungswert, double goldwert, int gewicht) {
+    public Gegenstand(String name, double angriffswert, double verteidigungswert, double goldwert, int gewicht, int typ) {
         this.name = name;
         this.angriffswert = angriffswert;
         this.verteidigungswert = verteidigungswert;
         this.goldwert = goldwert;
         this.zustand = 100;
         this.gewicht = gewicht;
+        this.typ = typ;
     }
 
     public double gibAngriffswert() {
@@ -87,5 +89,24 @@ public class Gegenstand {
     @Override
     public String toString() {
         return this.name;
+    }
+    public int gibTyp() {
+    	return typ;
+    }
+    public boolean istWaffe() {
+    	if(typ == 1) {
+    		return true;
+    	}
+    	else  {
+    		return false;
+    	}
+    }
+    public boolean istSchild() {
+    	if(typ == 2) {
+    		return true;
+    	}
+    	else  {
+    		return false;
+    	}
     }
 }
