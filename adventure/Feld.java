@@ -10,14 +10,35 @@ import java.awt.Graphics;
 */
 
 public class Feld {
-	int xPos, yPos, typ;
+	int xPos, yPos, typ, breite;
+	Gegenstand geg;
 	
-	public Feld(int x, int y, int t) {
+	public Feld(int x, int y, int t, int b) {
 		xPos = x;
 		yPos = y;
 		typ = t;
+		geg = null;
+		breite = b;
 	}
 	
+	public void aufDenBodenLegen(Gegenstand g) {
+		geg = g;
+	}
+	
+	public Gegenstand vomBodenAufheben() {
+		if(hatGegenstand()) {
+			Gegenstand temp = geg;
+			geg = null;
+			return temp;
+		} else {
+			return null;
+		}
+	}
+	
+	public boolean hatGegenstand() {
+		return (geg != null);
+	}
+
 	public void anzeigen(Graphics g) {
 		if(typ == 0) {
 			g.setColor(new Color(255,255,191));
@@ -31,5 +52,9 @@ public class Feld {
 		
 		g.setColor(new Color(0,0,0));
 		g.drawRect(20*xPos, 20*yPos, 20, 20);
+		
+		if(hatGegenstand()) {
+			geg.anzeigen(g, 4, 4);
+		}
 	}
 }

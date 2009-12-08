@@ -2,8 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package adventure;
+import java.awt.*;
 
 /**
  *
@@ -108,5 +108,10 @@ public class Gegenstand {
     	else  {
     		return false;
     	}
+    }
+    
+    public void anzeigen(Graphics g, int x, int y) {
+    	g.setColor(new Color(0,0,255));
+    	g.fillRect(20*x+2, 20*y+2, 17, 17);
     }
 }
