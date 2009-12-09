@@ -6,11 +6,12 @@
 package adventure;
 
 /**
- *
  * @author Timo Schrappe, Nils Preuschoff
  */
 public class Inventar {
-	// Maximale Anzahl der Gegenstand Objekte
+	/**
+	 * Maximale Anzahl der Gegenstand Objekte
+	 */
     private static final int max = 32;
     
     private Gegenstand[] liste;
@@ -24,19 +25,20 @@ public class Inventar {
         maximalgewicht = 20;
         gewicht = 0;
     }
-
-	private void entferne(int i) {
+    
+    /**
+     * Entfernt den Gegenstand am index i aus der liste[]
+     * 
+     * @param i
+     * @return boolean
+     */
+	private boolean entferne(int i) {
 	    if(liste[i] != null) {
 	        liste[i] = null;
+	        return true;
+	    } else {
+	    	return false;
 	    }
-	}
-
-	public void setMaxgewicht(int maxgewicht) {
-		this.maximalgewicht = maxgewicht;
-	}
-
-	public int getMaxgewicht() {
-		return maximalgewicht;
 	}
 
 	/**
@@ -56,6 +58,13 @@ public class Inventar {
         return true;
     }
 
+    /**
+     * "Packt" den Gegenstand String s aus, setzt das gewicht und anzahl runter.
+     * Gibt null zurueck wenn der Gegenstand nicht in liste[] ist.
+     * 
+     * @param s
+     * @return Gegenstand
+     */
     public Gegenstand auspacken(String s) {
         int pos = enthaelt(s);
 
@@ -69,11 +78,19 @@ public class Inventar {
             anzahl --;
             return temp;
         } else {
+        	// Kontroll-Ausgabe
             System.out.println(s+" ist nicht im Inventar");
             return null;
         }
     }
-
+    
+    /**
+     * Sucht in liste[] nach String g und gibt den index wert als int zurueck
+     * Wenn der Gegenstand nicht in liste[] ist gibt die Methode -1 zurueck
+     * 
+     * @param g
+     * @return int
+     */
     public int enthaelt(String g) {
         int pos = -1;
         for(int i = 0; i < liste.length; i++) {
@@ -88,6 +105,38 @@ public class Inventar {
         return pos;
     }
     
+    /**
+     * 
+     * Gibt einen boolschen Wert zurueck wenn der Gegenstand im Inventar ist
+     * 
+     * @param geg
+     * @return boolean
+     */
+    public boolean istImInventar(String geg) {
+    	boolean existiert = false;
+    	for(int i = 0; i < liste.length; i++) {
+    		if(geg == liste[i].toString()) {
+    			existiert = true;
+    			break;
+    		} else {
+    			existiert = false;
+    			continue;
+    		}
+    	}
+    	return existiert;
+    }
+    
+    /**
+     * Sortiert liste[] nach:
+     * 1: Angriffswert
+     * 2: Verteidigungswert
+     * 3: Gewicht
+     * 4: Goldwert
+     * 
+     * Bei 0 oder anderen Werten wird die Methode verlassen
+     * 
+     * @param modus
+     */
     public void sortieren(int modus) {
 
         for(int i = 0; i < anzahl; i++) {
@@ -138,13 +187,29 @@ public class Inventar {
         	}
         }
     
+    /**
+     * Setzt maximalgewicht
+     * 
+     * @param maximalgewicht Gewichtangabe als int
+     */
     public void setMaximalgewicht(int maximalgewicht) {
         this.maximalgewicht = maximalgewicht;
     }
-
+    
+    /**
+     * Gibt gewicht aus
+     * 
+     * @return int
+     */
     public int gibGewicht() {
         return gewicht;
     }
+    
+    /**
+     * Gibt maximalgewicht aus
+     * 
+     * @return int
+     */
     public int getMaximalgewicht() {
         return maximalgewicht;
     }
