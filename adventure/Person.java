@@ -39,42 +39,82 @@ public abstract class Person {
 	public double gibLife() {
 		return life;
 	}
-	public void anlegen(Gegenstand geg) {
+	
+	/**
+	 *
+	 * Rueckgabewert von void auf boolean geaendert.
+	 * Check das mal!
+	 *
+	 * @param geg
+	 * @return boolean
+	 */
+	public boolean anlegen(Gegenstand geg) {
         if(anlegbar(geg)) {
         	if(handR == null && geg.istWaffe()) {
         		handR = geg;
-        		angriffswert = angriffswert +geg.gibAngriffswert();
+        		angriffswert = angriffswert + geg.gibAngriffswert();
+        		
+        		// Kontroll-Ausgabe
         		System.out.println("Gegenstand "+geg.toString()+" wurde angelegt.");
+        		
+        		return true;
         	}
         	else if(handL == null && (geg.istWaffe() || geg.istSchild())) {
         		handL = geg;
-        		angriffswert = angriffswert +geg.gibAngriffswert();
-        		verteidigungswert = verteidigungswert +geg.gibVerteidigungswert();
+        		angriffswert = angriffswert + geg.gibAngriffswert();
+        		verteidigungswert = verteidigungswert + geg.gibVerteidigungswert();
+
+        		// Kontroll-Ausgabe
         		System.out.println("Gegenstand "+geg.toString()+" wurde angelegt.");
+        		
+        		return true;
+        	} else {
+        		return false;
         	}
-        	else {
-        	}
-        }
-        else {
+        } else {
+        	// Kontroll-Ausgabe
             System.out.println("Gegenstand "+geg.toString()+" wurde nicht angelegt.");
+            
+        	return false;
         }
 	}
-	public void einpacken(Gegenstand geg) {
-		rucksack.einpacken(geg);
+	
+	/**
+	 * 
+	 * Rueckgabewert von void auf boolean geaendert.
+	 * 
+	 * Check das mal!
+	 * 
+	 * @param geg
+	 * @return boolean
+	 */
+	public boolean einpacken(Gegenstand geg) {
+		if(rucksack.einpacken(geg)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	public Gegenstand ablegen(int hand) {
 		Gegenstand geg = null;
 		if(hand == 1) {
 			geg = handR;
 			handR = null;
+			
+			// Nicht angriffswert - geg.gitAnngriffswert()?
             angriffswert = angriffswert +geg.gibAngriffswert();
 		}
 		else if(hand == 2) {
 			geg = handL;
 			handL = null;
+			
+			// Siehe oben!
             angriffswert = angriffswert +geg.gibAngriffswert();
             verteidigungswert = verteidigungswert +geg.gibVerteidigungswert();
 		}
+		
+		// Warum immer diese leeren else-Klauseln? :D
+		// Kšnnen die nicht wegfallen?
 		else {
 			
 		}
@@ -94,17 +134,21 @@ public abstract class Person {
 		}
 		rucksack.einpacken(geg);
 	}
-	public void ausdemrucksackanlegen(String n) {
+	
+	// Wuerde ich auch mit boolean realisieren. Was sagst du?
+	public void ausDemRucksackAnlegen(String n) {
 		Gegenstand geg = null;
 		geg = rucksack.auspacken(n);
 		anlegen(geg);
 	}
-	public Gegenstand rucksackentfernen(String n) {
+	
+	public Gegenstand rucksackEntfernen(String n) {
 		Gegenstand geg = null;
         geg = rucksack.auspacken(n);
         System.out.println("Gegenstand "+geg.toString()+" wurde ausgepackt.");
 		return geg;
 	}
+	
 	public boolean anlegbar(Gegenstand geg) {
 		boolean ergebnis = false;
         if(rucksack.getMaximalgewicht()>= (rucksack.gibGewicht()+geg.gibGewicht())) {
