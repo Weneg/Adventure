@@ -39,10 +39,21 @@ public class Inventar {
 		return maximalgewicht;
 	}
 
-    public void einpacken(Gegenstand geg) {
+	/**
+	 * 
+	 * Rueckgabewert auf boolean geaendert. 
+	 * Noetig fŸr Person.einpacken(geg)
+	 * 
+	 * Check das mal!
+	 * 
+	 * @param geg
+	 * @return boolean
+	 */
+    public boolean einpacken(Gegenstand geg) {
         liste[anzahl] = geg;
         anzahl = anzahl+1;
         gewicht = gewicht + geg.gibGewicht();
+        return true;
     }
 
     public Gegenstand auspacken(String s) {
