@@ -135,11 +135,15 @@ public abstract class Person {
 		rucksack.einpacken(geg);
 	}
 	
-	// Wuerde ich auch mit boolean realisieren. Was sagst du?
-	public void ausDemRucksackAnlegen(String n) {
-		Gegenstand geg = null;
-		geg = rucksack.auspacken(n);
-		anlegen(geg);
+	public boolean ausDemRucksackAnlegen(String n) {
+		if(rucksack.istImInventar(n)) {
+			Gegenstand geg = null;
+			geg = rucksack.auspacken(n);
+			anlegen(geg);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public Gegenstand rucksackEntfernen(String n) {
