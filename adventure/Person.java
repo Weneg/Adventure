@@ -24,27 +24,56 @@ public abstract class Person {
 		handR = null;
 		life = 100.00;
 	}
+	
+	/**
+	 * Gibt name als String zurueck
+	 * 
+	 * @return String
+	 */
 	public String gibName() {
 		return name;
 	}
+	
+	/**
+	 * Gibt kraft als int zurueck
+	 * 
+	 * @return int
+	 */
 	public int gibKraft() {
 		return kraft;
 	}
+	
+	/**
+	 * Gibt angriffswert als double zurueck
+	 * 
+	 * @return double
+	 */
 	public double gibAngriffswert() {
 		return angriffswert;
 	}
+	
+	/**
+	 * Gibt verteidigungswert als double zurueck
+	 * 
+	 * @return double
+	 */
 	public double gibVerteidigungswert() {
 		return verteidigungswert;
 	}
+	
+	/**
+	 * Gibt life als double zurueck
+	 * 
+	 * @return double
+	 */
 	public double gibLife() {
 		return life;
 	}
 	
 	/**
-	 *
-	 * Rueckgabewert von void auf boolean geaendert.
-	 * Check das mal!
-	 *
+	 * Legt geg der Klasse Gegenstand in die rechte oder linke Hand.
+	 * Die linke Hand kann auch ein Schild aufnehmen.
+	 * 
 	 * @param geg
 	 * @return boolean
 	 */
@@ -80,10 +109,7 @@ public abstract class Person {
 	}
 	
 	/**
-	 * 
-	 * Rueckgabewert von void auf boolean geaendert.
-	 * 
-	 * Check das mal!
+	 * Legt den Gegenstand geg in rucksack der Klasse Inventar zurueck.
 	 * 
 	 * @param geg
 	 * @return boolean
@@ -96,6 +122,12 @@ public abstract class Person {
 		}
 	}
 	
+	/**
+	 * Legt den Gegenstand in hand ab und liefert diesen als Rueckgabewert.
+	 * 
+	 * @param hand
+	 * @return Gegenstand
+	 */
 	public Gegenstand ablegen(int hand) {
 		Gegenstand geg = null;
 		if(hand == 1) {
@@ -112,6 +144,11 @@ public abstract class Person {
 		return geg;
 	}
 	
+	/**
+	 * Verstaut den Gegenstand aus der Hand hand in den rucksack der Klasse Inventar zurueck.
+	 * 
+	 * @param hand
+	 */
 	public void verstauen(int hand) {
 		Gegenstand geg = null;
 		if(hand == 1) {
@@ -122,11 +159,15 @@ public abstract class Person {
 			geg = handL;
 			handL = null;
 		}
-		else {	
-		}
 		rucksack.einpacken(geg);
 	}
 	
+	/**
+	 * Legt n aus rucksack der Klasse Inventar in eine Hand
+	 * 
+	 * @param n
+	 * @return boolean
+	 */
 	public boolean ausDemRucksackAnlegen(String n) {
 		if(rucksack.istImInventar(n)) {
 			Gegenstand geg = null;
@@ -138,6 +179,12 @@ public abstract class Person {
 		}
 	}
 	
+	/**
+	 * Entfernt n aus rucksack der Klasse Inventar und gibt diesen zurueck.
+	 * 
+	 * @param n
+	 * @return Gegenstand
+	 */
 	public Gegenstand rucksackEntfernen(String n) {
 		Gegenstand geg = null;
         geg = rucksack.auspacken(n);
@@ -145,9 +192,15 @@ public abstract class Person {
 		return geg;
 	}
 	
+	/**
+	 * Prueft ob geg anlegbar ist. Wenn rucksack.gewicht + geg.gewicht kleiner oder gleich maximalgewicht ist, ist geg anlegbar.
+	 * 
+	 * @param geg
+	 * @return boolean
+	 */
 	public boolean anlegbar(Gegenstand geg) {
 		boolean ergebnis = false;
-        if(rucksack.getMaximalgewicht()>= (rucksack.gibGewicht()+geg.gibGewicht())) {
+        if(rucksack.getMaximalgewicht() >= (rucksack.gibGewicht() + geg.gibGewicht())) {
         	ergebnis = true;
         }
         else {
