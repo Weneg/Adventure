@@ -20,8 +20,8 @@ public class Main {
         Gegenstand gs2 = new Gegenstand("Hammer", 100.0, 40.0, 150.0, 50, 1);
         kurt.einpacken(gs1);
         kurt.einpacken(gs2);
-        kurt.rucksackentfernen("Schwert");
-        kurt.ausdemrucksackanlegen("Hammer");
+        kurt.rucksackEntfernen("Schwert");
+        kurt.ausDemRucksackAnlegen("Hammer");
     }
 
 }

@@ -95,31 +95,23 @@ public abstract class Person {
 			return false;
 		}
 	}
+	
 	public Gegenstand ablegen(int hand) {
 		Gegenstand geg = null;
 		if(hand == 1) {
 			geg = handR;
 			handR = null;
-			
-			// Nicht angriffswert - geg.gitAnngriffswert()?
-            angriffswert = angriffswert +geg.gibAngriffswert();
+            angriffswert = angriffswert - geg.gibAngriffswert();
 		}
 		else if(hand == 2) {
 			geg = handL;
 			handL = null;
-			
-			// Siehe oben!
-            angriffswert = angriffswert +geg.gibAngriffswert();
-            verteidigungswert = verteidigungswert +geg.gibVerteidigungswert();
-		}
-		
-		// Warum immer diese leeren else-Klauseln? :D
-		// Kšnnen die nicht wegfallen?
-		else {
-			
+            angriffswert = angriffswert - geg.gibAngriffswert();
+            verteidigungswert = verteidigungswert - geg.gibVerteidigungswert();
 		}
 		return geg;
-	}	
+	}
+	
 	public void verstauen(int hand) {
 		Gegenstand geg = null;
 		if(hand == 1) {

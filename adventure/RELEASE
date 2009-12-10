@@ -1,0 +1,9 @@
+Adventrue Release Notes 
+=======================
+
+beta2
+-----
+
+ * Klassen JavaDoc konform Kommentiert
+ 
+ * Fehler in der Methode ablegen() der Kasse Person behoben. Angriffswert und Verteidigungswert werden jetzt ordnungsgemaess verringert
