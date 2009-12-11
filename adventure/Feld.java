@@ -21,10 +21,27 @@ public class Feld {
 		breite = b;
 	}
 	
-	public void aufDenBodenLegen(Gegenstand g) {
-		geg = g;
+	/**
+	 * Legt g der Klasse Gegenstand auf dem Feld ab
+	 * 
+	 * @param g
+	 * @return boolean
+	 */
+	public boolean aufDenBodenLegen(Gegenstand g) {
+		if(g instanceof Gegenstand) {
+			geg = g; 
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
+	/**
+	 * Liefert eine Instanz der Klasse Gegenstand zurueck und loescht anschliessend
+	 * den Gegenstand von dem Feld.
+	 * 
+	 * @return Gegenstand
+	 */
 	public Gegenstand vomBodenAufheben() {
 		if(hatGegenstand()) {
 			Gegenstand temp = geg;
@@ -35,10 +52,20 @@ public class Feld {
 		}
 	}
 	
+	/**
+	 * Prueft das Feld auf einem Gegenstand.
+	 * @return
+	 */
 	public boolean hatGegenstand() {
 		return (geg != null);
 	}
-
+	
+	/**
+	 * Zeichnet ein Feld. Die Farbe variiert nach typ.
+	 * Hat das Feld ein Gegenstand zeichnet es diesen anschlie§end ein.
+	 * 
+	 * @param g
+	 */
 	public void anzeigen(Graphics g) {
 		if(typ == 0) {
 			g.setColor(new Color(255,255,191));
