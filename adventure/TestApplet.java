@@ -18,7 +18,11 @@ public class TestApplet extends JApplet {
 	 * Inizialisiert verschiedene Attribute verschiedener Klassen
 	 */
 	public void init() {
-		d = new Dungeon();
+		setSize(640, 480);
+		int h = getHeight();
+		int w = getWidth();
+		
+		d = new Dungeon(w, h);
 		g1 = new Gegenstand("Schwert", 50.0, 40.0, 200.0, 10, 1);
 		d.f[4][4].aufDenBodenLegen(g1);
 	}

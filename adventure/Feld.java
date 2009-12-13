@@ -75,13 +75,13 @@ public class Feld {
 			g.setColor(new Color(255,255,255));
 		}
 		
-		g.fillRect(20*xPos, 20*yPos, 20, 20);
+		g.fillRect(breite*xPos, breite*yPos, breite, breite);
 		
 		g.setColor(new Color(0,0,0));
-		g.drawRect(20*xPos, 20*yPos, 20, 20);
+		g.drawRect(breite*xPos, breite*yPos, breite, breite);
 		
 		if(hatGegenstand()) {
-			geg.anzeigen(g, 4, 4);
+			geg.anzeigen(g, 4, 4, breite);
 		}
 	}
 }

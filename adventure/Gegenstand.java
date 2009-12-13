@@ -110,8 +110,8 @@ public class Gegenstand {
     	}
     }
     
-    public void anzeigen(Graphics g, int x, int y) {
+    public void anzeigen(Graphics g, int x, int y, int b) {
     	g.setColor(new Color(0,0,255));
-    	g.fillRect(20*x+2, 20*y+2, 17, 17);
+    	g.fillRect(b*x+2, b*y+2, 17, 17);
     }
 }
