@@ -13,7 +13,7 @@ public abstract class Person {
 	private Gegenstand handL, handR;
 	private double angriffswert;
 	private double verteidigungswert;
-	private double life;
+	private int life;
 	
 	
 	public Person(String n, int k) {
@@ -22,7 +22,7 @@ public abstract class Person {
 		rucksack = new Inventar();
 		handL = null;
 		handR = null;
-		life = 100.00;
+		life = 100;
 	}
 	
 	/**
@@ -66,7 +66,13 @@ public abstract class Person {
 	 * 
 	 * @return double
 	 */
-	public double gibLife() {
+	public int gibLife() {
+		return life;
+	}
+	
+	public int verringerLifeUmProzent(int l) {
+		life = life - (life/100) * l;
+		System.out.print(life);
 		return life;
 	}
 	

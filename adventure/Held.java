@@ -33,7 +33,9 @@ public class Held extends Person {
 	}
 	
 	public void anzeigen(Graphics g, int b) {
-		g.setColor(new Color(255,0,255));
+		double rot = (100-gibLife())*2.55;
+		double gruen = gibLife()*2.55;
+		g.setColor(new Color((int)rot,(int)gruen,0));
     	g.fillOval(b*xPos+2, b*yPos+2, b-3, b-3);
 	}
 }
