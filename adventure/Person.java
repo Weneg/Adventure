@@ -12,7 +12,7 @@ import java.awt.Graphics;
 public abstract class Person {
 	private String  name;
 	private int	kraft;
-	private int life;
+	private double life;
 
 	private Inventar rucksack;
 	private Gegenstand handL, handR;
@@ -106,11 +106,11 @@ public abstract class Person {
 	 * 
 	 * @return double
 	 */
-	public int gibLife() {
+	public double gibLife() {
 		return life;
 	}
 	
-	public int verringerLifeUmProzent(int l) {
+	public double verringerLifeUmProzent(int l) {
 		life = life - ((life/100) * l);
 		System.out.print(life);
 		return life;
