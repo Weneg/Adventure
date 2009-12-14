@@ -1,6 +1,11 @@
 Adventrue Release Notes 
 =======================
 
+beta3
+-----
+
+ * Applet wird automatisch anhand der Applet-Groesse und der Anzahl der Felder dimensioniert.
+
 beta2
 -----
 
