@@ -12,6 +12,7 @@ import java.awt.Graphics;
 public class Feld {
 	int xPos, yPos, typ, breite;
 	Gegenstand geg;
+	Held held;
 	
 	public Feld(int x, int y, int t, int b) {
 		xPos = x;
@@ -58,6 +59,28 @@ public class Feld {
 	 */
 	public boolean hatGegenstand() {
 		return (geg != null);
+	}
+	
+	/**
+	 * Gibt true zurueck wenn Feld ein Held hat.
+	 * 
+	 * @return boolean
+	 */
+	public boolean istFrei() {
+		if(getTyp() != 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Gibt den Typ des Feldes zurueck.
+	 * 
+	 * @return int
+	 */
+	public int getTyp() {
+		return typ;
 	}
 	
 	/**

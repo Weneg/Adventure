@@ -44,6 +44,31 @@ public class Dungeon {
 		}
 	}
 	
+
+	public void heldRechts(Held h) {
+		if(f[h.getXWert()+1][h.getYWert()].istFrei()) {
+			h.setztePosition(h.getXWert()+1, h.getYWert());
+		}
+	}
+	
+	public void heldLinks(Held h) {
+		if(f[h.getXWert()-1][h.getYWert()].istFrei()) {
+			h.setztePosition(h.getXWert()-1, h.getYWert());
+		}
+	}
+	
+	public void heldHoch(Held h) {
+		if(f[h.getXWert()][h.getYWert()-1].istFrei()) {
+			h.setztePosition(h.getXWert(), h.getYWert()-1);
+		}
+	}
+	
+	public void heldRunter(Held h) {
+		if(f[h.getXWert()][h.getYWert()+1].istFrei()) {
+			h.setztePosition(h.getXWert(), h.getYWert()+1);
+		}
+	}
+	
 	public void anzeigen(Graphics g) {
 		for(int y = 0; y < 30; y++)
 			for(int x = 0; x < 40; x++)
