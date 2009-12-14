@@ -1,6 +1,9 @@
 
 package adventure;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
 *
 * @author Timo Schrappe, Nils Preuschoff
@@ -9,11 +12,16 @@ package adventure;
 public abstract class Person {
 	private String  name;
 	private int	kraft;
+	private int life;
+
 	private Inventar rucksack;
 	private Gegenstand handL, handR;
+	
 	private double angriffswert;
 	private double verteidigungswert;
-	private int life;
+	
+	protected int xPos;
+	protected int yPos;
 	
 	
 	public Person(String n, int k) {
@@ -23,7 +31,39 @@ public abstract class Person {
 		handL = null;
 		handR = null;
 		life = 100;
+		xPos = 1;
+		yPos = 1;
 	}
+	
+	/**
+	 * Gibt den X-Wert fuer das Feld zurueck.
+	 * 
+	 * @return int
+	 */
+	public int getXWert() {
+		return xPos;
+	}
+	
+	/**
+	 * Gibt den Y-Wert fuer das Feld zurueck.
+	 * 
+	 * @return int
+	 */
+	public int getYWert() {
+		return yPos;
+	}
+	
+	/**
+	 * Setzt die Position fuer xPos und yPos
+	 * 
+	 * @param x int
+	 * @param y int
+	 */
+	public void setztePosition(int x, int y) {
+		xPos = x;
+		yPos = y;
+	}
+	
 	
 	/**
 	 * Gibt name als String zurueck
@@ -71,7 +111,7 @@ public abstract class Person {
 	}
 	
 	public int verringerLifeUmProzent(int l) {
-		life = life - (life/100) * l;
+		life = life - ((life/100) * l);
 		System.out.print(life);
 		return life;
 	}
@@ -213,5 +253,20 @@ public abstract class Person {
             ergebnis = false;
         }
         return ergebnis;
+	}
+	
+	/**
+	 * Zeichnet eine Person
+	 * 
+	 * @param g
+	 */
+	public void anzeigen(Graphics g, int b) {
+		
+		double rot = (100-gibLife())*2.55;
+		double gruen = gibLife()*2.55;
+		
+		g.setColor(new Color((int)rot,(int)gruen,0));
+		
+    	g.fillOval(b*xPos+2, b*yPos+2, b-3, b-3);
 	}
 }

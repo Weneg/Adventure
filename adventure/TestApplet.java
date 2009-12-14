@@ -24,7 +24,6 @@ public class TestApplet extends JApplet implements KeyListener {
 		int h = getHeight();
 		int w = getWidth();
 		
-		h1 = new Held("Bloodsucker", 40);
 		d = new Dungeon(w, h);
 		g1 = new Gegenstand("Schwert", 50.0, 40.0, 200.0, 10, 1);
 		d.f[4][4].aufDenBodenLegen(g1);
@@ -34,19 +33,19 @@ public class TestApplet extends JApplet implements KeyListener {
 	public void keyPressed(KeyEvent event) {
 		switch(event.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
-				d.heldLinks(h1);
+				d.heldLinks();
 				repaint();
 				break;
 			case KeyEvent.VK_RIGHT:
-				d.heldRechts(h1);
+				d.heldRechts();
 				repaint();
 				break;
 			case KeyEvent.VK_UP:
-				d.heldHoch(h1);
+				d.heldHoch();
 				repaint();
 				break;
 			case KeyEvent.VK_DOWN:
-				d.heldRunter(h1);
+				d.heldRunter();
 				repaint();
 				break;
 		}
@@ -62,6 +61,5 @@ public class TestApplet extends JApplet implements KeyListener {
 	 */
 	public void paint(Graphics g) {
 		d.anzeigen(g);
-		h1.anzeigen(g, 20);
 	}
 }

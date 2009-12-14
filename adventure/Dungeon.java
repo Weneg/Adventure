@@ -9,11 +9,13 @@ import java.awt.*;
 
 public class Dungeon {
 	Feld[][] f;
+	Held hero;
 	int appletHoehe;
 	int appletBreite;
 	
 	public Dungeon(int w, int h) {
 		f = new Feld[40][30];
+		hero = new Held("Bloodsucker", 40);
 		appletHoehe = h;
 		appletBreite = w;
 		
@@ -45,41 +47,44 @@ public class Dungeon {
 	}
 	
 
-	public void heldRechts(Held h) {
-		if(f[h.getXWert()+1][h.getYWert()].istFrei()) {
-			h.setztePosition(h.getXWert()+1, h.getYWert());
+	public void heldRechts() {
+		if(f[hero.getXWert()+1][hero.getYWert()].istFrei()) {
+			hero.setztePosition(hero.getXWert()+1, hero.getYWert());
 		} else {
-			h.verringerLifeUmProzent(10);
+			hero.verringerLifeUmProzent(10);
 		}
 	}
 	
-	public void heldLinks(Held h) {
-		if(f[h.getXWert()-1][h.getYWert()].istFrei()) {
-			h.setztePosition(h.getXWert()-1, h.getYWert());
+	public void heldLinks() {
+		if(f[hero.getXWert()-1][hero.getYWert()].istFrei()) {
+			hero.setztePosition(hero.getXWert()-1, hero.getYWert());
 		} else {
-			h.verringerLifeUmProzent(10);
+			hero.verringerLifeUmProzent(10);
 		}
 	}
 	
-	public void heldHoch(Held h) {
-		if(f[h.getXWert()][h.getYWert()-1].istFrei()) {
-			h.setztePosition(h.getXWert(), h.getYWert()-1);
+	public void heldHoch() {
+		if(f[hero.getXWert()][hero.getYWert()-1].istFrei()) {
+			hero.setztePosition(hero.getXWert(), hero.getYWert()-1);
 		} else {
-			h.verringerLifeUmProzent(10);
+			hero.verringerLifeUmProzent(10);
 		}
 	}
 	
-	public void heldRunter(Held h) {
-		if(f[h.getXWert()][h.getYWert()+1].istFrei()) {
-			h.setztePosition(h.getXWert(), h.getYWert()+1);
+	public void heldRunter() {
+		if(f[hero.getXWert()][hero.getYWert()+1].istFrei()) {
+			hero.setztePosition(hero.getXWert(), hero.getYWert()+1);
 		} else {
-			h.verringerLifeUmProzent(10);
+			hero.verringerLifeUmProzent(10);
 		}
 	}
 	
 	public void anzeigen(Graphics g) {
-		for(int y = 0; y < 30; y++)
-			for(int x = 0; x < 40; x++)
+		for(int y = 0; y < 30; y++) {
+			for(int x = 0; x < 40; x++) {
 				f[x][y].anzeigen(g);
+			}
+		}
+		hero.anzeigen(g, berechneFeldBreite(f.length, f[0].length));
 	}
 }
