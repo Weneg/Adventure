@@ -89,6 +89,7 @@ public class Dungeon {
 	}
 	
 	public void monsterBewegen() {
+		Gegenstand geg = null;
 		for(int i = 0; i < 2; i++) {
 			int x = m[i].getXWert();
 			int y = m[i].getYWert();
@@ -98,6 +99,10 @@ public class Dungeon {
 			boolean hoch	= f[x][y-1].istFrei();
 			boolean runter = f[x][y+1].istFrei();
 			m[i].bewegen(links,rechts,hoch,runter);
+			if(f[x][y].hatGegenstand()) {
+				geg = f[x][y].vomBodenAufheben();
+			m[i].einpacken(geg);
+			}	
 		}
 	}
 	
