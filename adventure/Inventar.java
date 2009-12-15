@@ -16,13 +16,13 @@ public class Inventar {
     
     private Gegenstand[] liste;
     private int anzahl;
-    private int maximalgewicht;
-    private int gewicht;
+    private double maximalgewicht;
+    private double gewicht;
     
-    public Inventar() {
+    public Inventar(int k) {
         liste = new Gegenstand[max];
         anzahl = 0;
-        maximalgewicht = 20;
+        maximalgewicht = (Math.sqrt(20)*5);
         gewicht = 0;
     }
     
@@ -52,10 +52,14 @@ public class Inventar {
 	 * @return boolean
 	 */
     public boolean einpacken(Gegenstand geg) {
+    	if (geg.gibGewicht()<= (getMaximalgewicht() - gibGewicht())) {
         liste[anzahl] = geg;
         anzahl = anzahl+1;
         gewicht = gewicht + geg.gibGewicht();
         return true;
+    	} else {
+    		return false;
+    	}
     }
 
     /**
@@ -192,7 +196,7 @@ public class Inventar {
      * 
      * @param maximalgewicht Gewichtangabe als int
      */
-    public void setMaximalgewicht(int maximalgewicht) {
+    public void setMaximalgewicht(double maximalgewicht) {
         this.maximalgewicht = maximalgewicht;
     }
     
@@ -201,7 +205,7 @@ public class Inventar {
      * 
      * @return int
      */
-    public int gibGewicht() {
+    public double gibGewicht() {
         return gewicht;
     }
     
@@ -210,7 +214,7 @@ public class Inventar {
      * 
      * @return int
      */
-    public int getMaximalgewicht() {
+    public double getMaximalgewicht() {
         return maximalgewicht;
     }
 }

@@ -27,7 +27,7 @@ public abstract class Person {
 	public Person(String n, int k) {
 		name = n;
 		kraft = k;
-		rucksack = new Inventar();
+		rucksack = new Inventar(k);
 		handL = null;
 		handR = null;
 		life = 100;

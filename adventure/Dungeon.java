@@ -101,8 +101,11 @@ public class Dungeon {
 			m[i].bewegen(links,rechts,hoch,runter);
 			if(f[x][y].hatGegenstand()) {
 				geg = f[x][y].vomBodenAufheben();
-			m[i].einpacken(geg);
-			}	
+				if(m[i].einpacken(geg)) {
+				} else {
+					f[x][y].aufDenBodenLegen(geg);
+				}
+			}
 		}
 	}
 	
@@ -123,7 +126,12 @@ public class Dungeon {
 		int y = hero.getYWert();
 		if(f[x][y].hatGegenstand()) {
 			geg = f[x][y].vomBodenAufheben();
-			return hero.einpacken(geg);
+			if(hero.einpacken(geg)) {
+				return true;
+			} else {
+				f[x][y].aufDenBodenLegen(geg);
+				return false;
+			}
 		} else {
 			return false;
 		}

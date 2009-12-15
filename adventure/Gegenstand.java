@@ -15,10 +15,10 @@ public class Gegenstand {
     private double verteidigungswert;
     private double goldwert;
     private double zustand;
-    private int gewicht;
+    private double gewicht;
     private int typ;
 
-    public Gegenstand(String name, double angriffswert, double verteidigungswert, double goldwert, int gewicht, int typ) {
+    public Gegenstand(String name, double angriffswert, double verteidigungswert, double goldwert, double gewicht, int typ) {
         this.name = name;
         this.angriffswert = angriffswert;
         this.verteidigungswert = verteidigungswert;
@@ -56,11 +56,11 @@ public class Gegenstand {
         return zustand;
     }
 
-    public int gibGewicht() {
+    public double gibGewicht() {
         return gewicht;
     }
     
-    public void setGewicht(int gew) {
+    public void setGewicht(double gew) {
     	this.gewicht = gew;
     }
 
