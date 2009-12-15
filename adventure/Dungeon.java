@@ -112,13 +112,15 @@ public class Dungeon {
 			m[i].anzeigen(g, berechneFeldBreite(f.length, f[0].length));
 		}
 	}
-	public void heldAufsammeln() {
+	public boolean heldAufsammeln() {
 		Gegenstand geg = null;
 		int x =hero.getXWert();
 		int y = hero.getYWert();
 		if(f[x][y].hatGegenstand()) {
 			geg = f[x][y].vomBodenAufheben();
+			return hero.einpacken(geg);
+		} else {
+			return false;
 		}
-		hero.einpacken(geg);
 	}
 }

@@ -72,7 +72,6 @@ public class TestApplet extends JApplet implements KeyListener, Runnable {
 				repaint();
 				break;
 			case KeyEvent.VK_ENTER:
-				System.out.print("asd");
 				d.heldAufsammeln();
 				repaint();
 				break;
