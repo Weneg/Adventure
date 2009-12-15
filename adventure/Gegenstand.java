@@ -32,6 +32,10 @@ public class Gegenstand {
         return angriffswert;
     }
     
+    public String gibName() {
+    	return name;
+    }
+    
     public void setAngriffswert(double angw) {
     	this.angriffswert = angw;
     }

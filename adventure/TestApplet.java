@@ -15,6 +15,7 @@ public class TestApplet extends JApplet implements KeyListener, Runnable, MouseL
 	Dungeon d;
 	Gegenstand g1;
 	Thread timer;
+	Infofenster info;
 	
 	String msg;
 	
@@ -96,6 +97,10 @@ public class TestApplet extends JApplet implements KeyListener, Runnable, MouseL
 			d.heldRunter();
 		} else if(getFeldY(e) < d.hero.getYWert() && d.hero.getXWert() == getFeldX(e)) {
 			d.heldHoch();
+		}
+		
+		if(d.istHeldFeld(getFeldX(e), getFeldY(e))) {
+			d.infoHeldZeigen();
 		}
 		
 		repaint();
