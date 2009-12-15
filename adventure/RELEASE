@@ -5,6 +5,8 @@ beta3
 -----
 
  * Applet wird automatisch anhand der Applet-Groesse und der Anzahl der Felder dimensioniert.
+ 
+ * Held laesst sich mit der Tastatur steuern. UP fuer oben DOWN fuer runter und LEFT und RIGHT fuer rechts und links
 
 beta2
 -----

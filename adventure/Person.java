@@ -112,7 +112,7 @@ public abstract class Person {
 	
 	public double verringerLifeUmProzent(int l) {
 		life = life - ((life/100) * l);
-		System.out.print(life);
+		System.out.println(life);
 		return life;
 	}
 	
