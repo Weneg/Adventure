@@ -83,6 +83,10 @@ public class Feld {
 		return typ;
 	}
 	
+	public int getBreite() {
+		return breite;
+	}
+	
 	/**
 	 * Zeichnet ein Feld. Die Farbe variiert nach typ.
 	 * Hat das Feld ein Gegenstand zeichnet es diesen anschlie§end ein.

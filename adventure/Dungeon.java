@@ -154,7 +154,7 @@ public class Dungeon {
 	 */
 	public boolean heldAufsammeln() {
 		Gegenstand geg = null;
-		int x =hero.getXWert();
+		int x = hero.getXWert();
 		int y = hero.getYWert();
 		if(f[x][y].hatGegenstand()) {
 			geg = f[x][y].vomBodenAufheben();
@@ -167,5 +167,15 @@ public class Dungeon {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean istHeldFeld(int mausX, int mausY) {
+		int x = hero.getXWert();
+		int y = hero.getYWert();
+		return ((x == mausX) && (y == mausY));
+	}
+	
+	public void infoHeldZeigen() {
+		hero.infoZeigen();
 	}
 }

@@ -23,6 +23,9 @@ public abstract class Person {
 	protected int xPos;
 	protected int yPos;
 	
+
+	Infofenster info;
+
 	/**
 	 * Konstruktor der Klasse Person
 	 * @param n
@@ -37,6 +40,10 @@ public abstract class Person {
 		life = 100;
 		xPos = 1;
 		yPos = 1;
+	}
+	
+	public void infoZeigen() {
+		info = new Infofenster(this);
 	}
 	
 	/**
@@ -262,6 +269,32 @@ public abstract class Person {
             ergebnis = false;
         }
         return ergebnis;
+	}
+	
+	/**
+	 * Gibt den Gegenstad der linken Hand aus.
+	 * 
+	 * @return String
+	 */
+	public String getHandL() {
+		if(handL != null) {
+			return handL.gibName();
+		} else {
+			return "none";
+		}
+	}
+	
+	/**
+	 * Gibt den Gegenstand der rechten Hand aus.
+	 * 
+	 * @return String
+	 */
+	public String getHandR() {
+		if(handR != null) {
+			return handR.gibName();
+		} else {
+			return "none";
+		}
 	}
 	
 	/**

@@ -43,10 +43,15 @@ public class Gegenstand {
     public double gibAngriffswert() {
         return angriffswert;
     }
-    /**
-     * Setzt den Angriffswert auf einen anderen Wert
-     * @param angw
-     */
+    
+    public String gibName() {
+    	return name;
+    }
+    
+	/**
+	 * Setzt den Angriffswert auf einen anderen Wert
+	 * @param angw
+	 */
     public void setAngriffswert(double angw) {
     	this.angriffswert = angw;
     }
