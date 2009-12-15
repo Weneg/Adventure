@@ -1,4 +1,4 @@
-Adventrue Release Notes 
+Adventure Release Notes 
 =======================
 
 beta3
@@ -7,6 +7,20 @@ beta3
  * Applet wird automatisch anhand der Applet-Groesse und der Anzahl der Felder dimensioniert.
  
  * Held laesst sich mit der Tastatur steuern. UP fuer oben DOWN fuer runter und LEFT und RIGHT fuer rechts und links
+ 
+ * Held und Monster können Gegenstände aufsammeln. Held tut dies ueber die Taste ENTER und Monster machen es selbststaendig
+ 
+ * Held über Maus steuerbar
+ 
+ * Monster bewegen sich selbst unabhaengig vom Helden
+ 
+ * Anzeige der Koordinaten des Helden
+ 
+ * Infofenster mit den Daten des Helden
+ 
+ * Klassen JavaDoc konform kommentiert
+ 
+ * Maximalgewicht des Inventar berechnet sich nun aus der Staerke des Helden/Monsters
 
 beta2
 -----
