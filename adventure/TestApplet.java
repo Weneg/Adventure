@@ -10,11 +10,12 @@ import java.awt.event.*;
 * @author Timo Schrappe, Nils Preuschoff
 * 
 */
-public class TestApplet extends JApplet implements KeyListener {
+public class TestApplet extends JApplet implements KeyListener, Runnable {
 
 	Dungeon d;
 	Gegenstand g1;
 	Held h1;
+	Thread timer;
 	
 	/**
 	 * Inizialisiert verschiedene Attribute verschiedener Klassen
@@ -30,6 +31,28 @@ public class TestApplet extends JApplet implements KeyListener {
 		addKeyListener(this);
 	}
 	
+	public void start() {
+		if(timer == null) {
+			timer = new Thread(this);
+			timer.start();
+		}
+	}
+	public void stop() {
+		if(timer != null) {
+			timer.stop();
+			timer = null;		
+		}
+	}
+	public void run() {
+		while(true) {
+			d.monsterBewegen();
+			repaint();
+			try {
+				Thread.sleep(100);
+			}
+			catch(InterruptedException e) {}
+		}
+	}
 	public void keyPressed(KeyEvent event) {
 		switch(event.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
@@ -46,6 +69,11 @@ public class TestApplet extends JApplet implements KeyListener {
 				break;
 			case KeyEvent.VK_DOWN:
 				d.heldRunter();
+				repaint();
+				break;
+			case KeyEvent.VK_ENTER:
+				System.out.print("asd");
+				d.heldAufsammeln();
 				repaint();
 				break;
 		}

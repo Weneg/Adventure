@@ -10,16 +10,25 @@ import java.awt.*;
 public class Dungeon {
 	Feld[][] f;
 	Held hero;
+	Monster[] m;
 	int appletHoehe;
 	int appletBreite;
 	
 	public Dungeon(int w, int h) {
 		f = new Feld[40][30];
 		hero = new Held("Bloodsucker", 40);
+		m = new Monster[10];
+		
 		appletHoehe = h;
 		appletBreite = w;
 		
 		int feldBreite = this.berechneFeldBreite(f.length, f[0].length);
+		
+		Monster m1 = new Monster("Bloodsucker", 30);
+		Monster m2 = new Monster("Timo", 40);
+		
+		m[0] = m1;
+		m[1] = m2;
 		
 		for(int y = 0; y < 30; y++)
 			for(int x = 0; x < 40; x++) {
@@ -79,6 +88,19 @@ public class Dungeon {
 		}
 	}
 	
+	public void monsterBewegen() {
+		for(int i = 0; i < 2; i++) {
+			int x = m[i].getXWert();
+			int y = m[i].getYWert();
+			
+			boolean rechts = f[x+1][y].istFrei();
+			boolean links = f[x-1][y].istFrei();
+			boolean hoch	= f[x][y-1].istFrei();
+			boolean runter = f[x][y+1].istFrei();
+			m[i].bewegen(links,rechts,hoch,runter);
+		}
+	}
+	
 	public void anzeigen(Graphics g) {
 		for(int y = 0; y < 30; y++) {
 			for(int x = 0; x < 40; x++) {
@@ -86,5 +108,17 @@ public class Dungeon {
 			}
 		}
 		hero.anzeigen(g, berechneFeldBreite(f.length, f[0].length));
+		for(int i = 0; i < 2; i++){
+			m[i].anzeigen(g, berechneFeldBreite(f.length, f[0].length));
+		}
+	}
+	public void heldAufsammeln() {
+		Gegenstand geg = null;
+		int x =hero.getXWert();
+		int y = hero.getYWert();
+		if(f[x][y].hatGegenstand()) {
+			geg = f[x][y].vomBodenAufheben();
+		}
+		hero.einpacken(geg);
 	}
 }
