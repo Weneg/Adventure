@@ -30,19 +30,27 @@ public class TestApplet extends JApplet implements KeyListener, Runnable {
 		d.f[4][4].aufDenBodenLegen(g1);
 		addKeyListener(this);
 	}
-	
+	/**
+	 * Ist fuer den Start des timers zustaending, sollte dieser nicht initiallisiert sein
+	 */
 	public void start() {
 		if(timer == null) {
 			timer = new Thread(this);
 			timer.start();
 		}
 	}
+	/**
+	 * Stopt den Timer, sollte dieser nicht initiallisiert werden
+	 */
 	public void stop() {
 		if(timer != null) {
 			timer.stop();
 			timer = null;		
 		}
 	}
+	/**
+	 * Loest eine Bewegung der Monster alle 200 Millisekunden aus
+	 */
 	public void run() {
 		while(true) {
 			d.monsterBewegen();
@@ -53,6 +61,9 @@ public class TestApplet extends JApplet implements KeyListener, Runnable {
 			catch(InterruptedException e) {}
 		}
 	}
+	/**
+	 * Faengt Tastatureingaben ab
+	 */
 	public void keyPressed(KeyEvent event) {
 		switch(event.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
@@ -82,7 +93,7 @@ public class TestApplet extends JApplet implements KeyListener, Runnable {
 	public void keyTyped(KeyEvent event) {}
 	
 	/**
-	 * Zeichnet die Dangeon als Applet
+	 * Zeichnet das Dungeon als Applet
 	 * 
 	 * @param g Objekt der Klasse Graphics
 	 */

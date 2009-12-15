@@ -7,11 +7,17 @@ import java.awt.*;
 */
 
 public class Held extends Person {
-	
+	/**
+	 * konstruktor der Klasse Held
+	 * @param n
+	 * @param kraft
+	 */
 	public Held(String n, int kraft) {
 		super(n, kraft);
 	}
-	
+	/**
+	 * Zeichnet den Helden auf das Feld
+	 */
 	public void anzeigen(Graphics g, int feldbreite) {
 		g.setColor(new Color(255,0,0));
 		

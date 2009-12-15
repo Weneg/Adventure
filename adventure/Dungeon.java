@@ -13,7 +13,11 @@ public class Dungeon {
 	Monster[] m;
 	int appletHoehe;
 	int appletBreite;
-	
+	/**
+	 *  Konstruktor der Klasse Dungeon
+	 * @param w
+	 * @param h
+	 */
 	public Dungeon(int w, int h) {
 		f = new Feld[40][30];
 		hero = new Held("Bloodsucker", 40);
@@ -43,7 +47,12 @@ public class Dungeon {
 				}
 			}
 	}
-	
+	/**
+	 * Berechnet die Feldgroesse aufgrund der Appletgroesse
+	 * @param feldW
+	 * @param feldH
+	 * @return int
+	 */
 	public int berechneFeldBreite(int feldW, int feldH) {
 		int feldBreite = appletBreite / feldW;
 		int feldHoehe = appletHoehe / feldH;
@@ -55,7 +64,10 @@ public class Dungeon {
 		}
 	}
 	
-
+	/**
+	 * Laesst den Held ein Feld nach rechts gehen wenn dieses keine Mauer ist 
+	 * Sollte es eine Mauer sein sorgt sie für eine Verringerung des Lifes
+	 */
 	public void heldRechts() {
 		if(f[hero.getXWert()+1][hero.getYWert()].istFrei()) {
 			hero.setztePosition(hero.getXWert()+1, hero.getYWert());
@@ -64,6 +76,10 @@ public class Dungeon {
 		}
 	}
 	
+	/**
+	 * Laesst den Held ein Feld nach links gehen wenn dieses keine Mauer ist 
+	 * Sollte es eine Mauer sein sorgt sie für eine Verringerung des Lifes
+	 */	
 	public void heldLinks() {
 		if(f[hero.getXWert()-1][hero.getYWert()].istFrei()) {
 			hero.setztePosition(hero.getXWert()-1, hero.getYWert());
@@ -71,7 +87,10 @@ public class Dungeon {
 			hero.verringerLifeUmProzent(10);
 		}
 	}
-	
+	/**
+	 * Laesst den Held ein Feld hoch gehen wenn dieses keine Mauer ist 
+	 * Sollte es eine Mauer sein sorgt sie für eine Verringerung des Lifes
+	 */	
 	public void heldHoch() {
 		if(f[hero.getXWert()][hero.getYWert()-1].istFrei()) {
 			hero.setztePosition(hero.getXWert(), hero.getYWert()-1);
@@ -79,7 +98,10 @@ public class Dungeon {
 			hero.verringerLifeUmProzent(10);
 		}
 	}
-	
+	/**
+	 * Laesst den Held ein Feld runter gehen wenn dieses keine Mauer ist 
+	 * Sollte es eine Mauer sein sorgt sie für eine Verringerung des Lifes
+	 */
 	public void heldRunter() {
 		if(f[hero.getXWert()][hero.getYWert()+1].istFrei()) {
 			hero.setztePosition(hero.getXWert(), hero.getYWert()+1);
@@ -87,7 +109,10 @@ public class Dungeon {
 			hero.verringerLifeUmProzent(10);
 		}
 	}
-	
+	/**
+	 * Laesst das Monster sich zufällig bewegen 
+	 * und laesst Gegenstaende aufheben sollte einer auf dem Feld liegen
+	 */
 	public void monsterBewegen() {
 		Gegenstand geg = null;
 		for(int i = 0; i < 2; i++) {
@@ -108,7 +133,10 @@ public class Dungeon {
 			}
 		}
 	}
-	
+	/**
+	 * Zeichnet das Dungeon und loest das zeichnen des Helden und der Monster aus
+	 * @param g
+	 */
 	public void anzeigen(Graphics g) {
 		for(int y = 0; y < 30; y++) {
 			for(int x = 0; x < 40; x++) {
@@ -120,6 +148,10 @@ public class Dungeon {
 			m[i].anzeigen(g, berechneFeldBreite(f.length, f[0].length));
 		}
 	}
+	/**
+	 * Laesst den Helden Gegenstaende aufsammeln, falls auf dem Feld einer liegt wo er steht und er diesen auch tragen kann
+	 * @return
+	 */
 	public boolean heldAufsammeln() {
 		Gegenstand geg = null;
 		int x =hero.getXWert();

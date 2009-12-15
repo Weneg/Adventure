@@ -18,7 +18,10 @@ public class Inventar {
     private int anzahl;
     private double maximalgewicht;
     private double gewicht;
-    
+    /**
+     * Konstruktor der Klasse Inventar
+     * @param k
+     */
     public Inventar(int k) {
         liste = new Gegenstand[max];
         anzahl = 0;
@@ -43,11 +46,7 @@ public class Inventar {
 
 	/**
 	 * 
-	 * Rueckgabewert auf boolean geaendert. 
-	 * Noetig für Person.einpacken(geg)
-	 * 
-	 * Check das mal!
-	 * 
+	 * Packt den uebergebenen Gegenstand in das Inventar, wenn das Maximalgewicht nicht ueberschritten wird
 	 * @param geg
 	 * @return boolean
 	 */

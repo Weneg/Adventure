@@ -9,11 +9,22 @@ import java.util.Random;
 
 public class Monster extends Person {
 	Random rand;
+	/**
+	 * Konstruktor der Klasse Monster
+	 * @param n
+	 * @param kraft
+	 */
 	public Monster(String n, int kraft) {
 		super(n, kraft);
 		rand = new Random();
 	}
-	
+	/**
+	 * Loest eine zufaellige Bewegung auf ein benachbartes Feld aus
+	 * @param links
+	 * @param rechts
+	 * @param oben
+	 * @param unten
+	 */
 	public void bewegen(boolean links, boolean rechts, boolean oben, boolean unten) {
 		int richtung = rand.nextInt(4)+1;
 		switch(richtung) {

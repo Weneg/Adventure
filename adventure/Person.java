@@ -23,7 +23,11 @@ public abstract class Person {
 	protected int xPos;
 	protected int yPos;
 	
-	
+	/**
+	 * Konstruktor der Klasse Person
+	 * @param n
+	 * @param k
+	 */
 	public Person(String n, int k) {
 		name = n;
 		kraft = k;
@@ -109,7 +113,12 @@ public abstract class Person {
 	public double gibLife() {
 		return life;
 	}
-	
+	/**
+	 * Verringert das Life der Person um den uebergebenen Wert 
+	 * Dieser Wert ist als prozentzahl zu verstehen
+	 * @param l
+	 * @return double
+	 */
 	public double verringerLifeUmProzent(int l) {
 		life = life - ((life/100) * l);
 		System.out.println(life);
