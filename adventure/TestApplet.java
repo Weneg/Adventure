@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class TestApplet extends JApplet implements KeyListener, Runnable, MouseListener {
 
 	Dungeon d;
-	Gegenstand g1;
+	Gegenstand g1,g2,g3;
 	Thread timer;
 	Infofenster info;
 	
@@ -30,7 +30,11 @@ public class TestApplet extends JApplet implements KeyListener, Runnable, MouseL
 		
 		d = new Dungeon(w, h);
 		g1 = new Gegenstand("Schwert", 50.0, 40.0, 200.0, 10, 1);
-		d.f[4][4].aufDenBodenLegen(g1);
+		g2 = new Gegenstand("Hammer", 50.0, 40.0, 200.0, 10, 1);
+		g3 = new Gegenstand("Axt", 50.0, 40.0, 200.0, 10, 1);
+
+		d.f[16][14].aufDenBodenLegen(g1);
+		d.f[16][15].aufDenBodenLegen(g2);		
 		
 		addMouseListener(this);
 		addKeyListener(this);
@@ -61,7 +65,7 @@ public class TestApplet extends JApplet implements KeyListener, Runnable, MouseL
 			d.monsterBewegen();
 			repaint();
 			try {
-				Thread.sleep(200);
+				Thread.sleep(2000);
 			}
 			catch(InterruptedException e) {}
 		}
@@ -89,6 +93,7 @@ public class TestApplet extends JApplet implements KeyListener, Runnable, MouseL
 				break;
 			case KeyEvent.VK_ENTER:
 				d.heldAufsammeln();
+				//d.hero.ausDemRucksackAnlegen("Schwert");
 				repaint();
 				break;
 		}

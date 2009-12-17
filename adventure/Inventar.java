@@ -216,4 +216,23 @@ public class Inventar {
     public double getMaximalgewicht() {
         return maximalgewicht;
     }
+    
+    
+    public Gegenstand[] gibInhalt() {
+    	return liste;
+    }
+    
+    public String[] getInhaltName() {
+    	String[] namen;
+    	namen = new String[liste.length];
+    	
+    	for(int i = 0; i < liste.length; i++) {
+    		namen[i] = liste[i].gibName();
+    	}
+    	return namen;
+    }
+    
+    public int gibAnzahl() {
+    	return anzahl;
+    }
 }

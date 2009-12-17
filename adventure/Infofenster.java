@@ -1,12 +1,14 @@
 package adventure;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Infofenster extends JFrame {
+public class Infofenster extends JFrame implements MouseListener, ActionListener {
 
 	Person pers;
 	Formen form;
-	JButton lButton;
+	Button schliessenButton, rucksackButton;
+	RucksackFenster rucksack;
 	
 	public Infofenster(Person pers) {
 		super("Held");
@@ -14,13 +16,27 @@ public class Infofenster extends JFrame {
 		this.pers = pers;
 		form = new Formen();
 		
-		lButton = new JButton("Schlie§en");
-		add(lButton);
-		lButton.setBounds(14, 160, 80, 20);
+		schliessenButton = new Button("Schlie§en");
+		rucksackButton = new Button("Rucksack");
+		add(schliessenButton);
+		add(rucksackButton);
+		schliessenButton.setBounds(14, 160, 80, 20);
+		rucksackButton.setBounds(200, 20, 100, 100);
+		schliessenButton.addActionListener(this);
+		rucksackButton.addActionListener(this);
+		
 		setLayout(null);
-		setSize(185,220);
+		setSize(330,220);
 		setVisible(true);
 	}
+	
+	public void mouseClicked(MouseEvent e) {
+		repaint();
+	}
+	public void mouseExited(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
 	
 	public void paint(Graphics g) {
 		form.rechteck3D(g, 10, 30, 160, 137, Color.WHITE);
@@ -44,5 +60,15 @@ public class Infofenster extends JFrame {
 		
 		form.textkasten3D(g, pers.getHandR(), 80, 144, 85, Color.YELLOW);
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == rucksackButton) {
+			rucksack = new RucksackFenster(pers.getInventar());
+		} else if(e.getSource() == schliessenButton) {
+			this.setVisible(false);
+		}
+		repaint();
 	}
 }

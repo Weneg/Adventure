@@ -29,7 +29,7 @@ public class Feld {
 	 * @return boolean
 	 */
 	public boolean aufDenBodenLegen(Gegenstand g) {
-		if(g instanceof Gegenstand) {
+		if(g != null) {
 			geg = g; 
 			return true;
 		} else {
@@ -108,7 +108,7 @@ public class Feld {
 		g.drawRect(breite*xPos, breite*yPos, breite, breite);
 		
 		if(hatGegenstand()) {
-			geg.anzeigen(g, 4, 4, breite);
+			geg.anzeigen(g, xPos, yPos, breite);
 		}
 	}
 }

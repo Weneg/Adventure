@@ -311,4 +311,8 @@ public abstract class Person {
 		
     	g.fillOval(b*xPos+2, b*yPos+2, b-3, b-3);
 	}
+	
+	public Inventar getInventar() {
+		return rucksack;
+	}
 }
