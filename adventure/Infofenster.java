@@ -71,4 +71,10 @@ public class Infofenster extends JFrame implements MouseListener, ActionListener
 		}
 		repaint();
 	}
+	
+	public void refreshRucksackFenster() {
+		if(rucksack != null) {
+			rucksack.repaint();
+		}
+	}
 }

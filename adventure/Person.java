@@ -46,6 +46,13 @@ public abstract class Person {
 		info = new Infofenster(this);
 	}
 	
+	public void refresh() {
+		if(info != null) {
+		info.refreshRucksackFenster();
+		}
+	}
+	
+	
 	/**
 	 * Gibt den X-Wert fuer das Feld zurueck.
 	 * 

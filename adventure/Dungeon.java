@@ -159,6 +159,7 @@ public class Dungeon {
 		if(f[x][y].hatGegenstand()) {
 			geg = f[x][y].vomBodenAufheben();
 			if(hero.einpacken(geg)) {
+				hero.refresh();
 				return true;
 			} else {
 				f[x][y].aufDenBodenLegen(geg);
